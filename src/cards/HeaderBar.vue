@@ -54,12 +54,13 @@ const updatedText = computed(() => {
   font-size: 28px;
   font-weight: 700;
   line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .subtitle {
   margin-top: 2px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .header-btn {

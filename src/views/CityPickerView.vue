@@ -232,7 +232,7 @@ function goBack() {
 }
 
 .search-icon {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .search-input {
@@ -245,12 +245,12 @@ function goBack() {
   padding: 12px 10px;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.55);
   }
 }
 
 .clear-btn {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.65);
   display: grid;
   place-items: center;
 }
@@ -288,7 +288,7 @@ function goBack() {
   padding: 30px 20px;
   text-align: center;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .result-list {
@@ -318,10 +318,10 @@ function goBack() {
 .result-sub {
   margin-top: 2px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .result-arrow {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.55);
 }
 </style>

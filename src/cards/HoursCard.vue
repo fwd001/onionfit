@@ -118,7 +118,7 @@ void weatherDesc
 
 .hour-time {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .hour-kind {
@@ -143,7 +143,7 @@ void weatherDesc
   color: #d7b3ff;
 }
 .k-fog {
-  color: #9ca1aa;
+  color: #c5c8cf;
 }
 
 .hour-temp {

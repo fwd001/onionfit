@@ -21,7 +21,7 @@ defineProps<{
 .meta-line {
   padding: 16px 16px 8px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.68);
   text-align: center;
 }
 

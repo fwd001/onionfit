@@ -68,7 +68,7 @@ const colors: Record<keyof DemandVector, string> = {
 .demand-label {
   width: 44px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .bar-track {
@@ -90,6 +90,6 @@ const colors: Record<keyof DemandVector, string> = {
   text-align: right;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.72);
 }
 </style>

@@ -12,27 +12,27 @@ export interface Palette {
 
 const PALETTES: Record<WeatherKind, { day: [string, string, string]; night: [string, string, string] }> = {
   clear: {
-    day: ['#2E5BFF', '#6BA3FF', '#A8D2FF'],
+    day: ['#1a3580', '#2d54c0', '#3a6fb8'],
     night: ['#0B1B4A', '#1C2E6B', '#3E5C9E'],
   },
   cloudy: {
-    day: ['#334A6E', '#5B7596', '#93A9BF'],
+    day: ['#2a3d58', '#3f5573', '#4a6075'],
     night: ['#1B2537', '#2E3C52', '#4A5D75'],
   },
   rain: {
-    day: ['#1F3A54', '#33566E', '#5E7E93'],
+    day: ['#1a3045', '#2c4a60', '#3a5870'],
     night: ['#0E1F2E', '#1A3042', '#33506B'],
   },
   snow: {
-    day: ['#4A6B8A', '#7E9BB4', '#C5D8E6'],
+    day: ['#3a5270', '#557088', '#5a7890'],
     night: ['#22344A', '#3A5066', '#61788C'],
   },
   thunder: {
-    day: ['#26223B', '#45375C', '#6E5370'],
+    day: ['#221d35', '#3a2d50', '#4a3860'],
     night: ['#140F24', '#2A1F3D', '#4A3360'],
   },
   fog: {
-    day: ['#4A4E57', '#6E737C', '#9CA1AA'],
+    day: ['#3a3d45', '#4f535c', '#5a5e68'],
     night: ['#23252B', '#3A3D44', '#585C64'],
   },
 }

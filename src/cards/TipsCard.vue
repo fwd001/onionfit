@@ -123,7 +123,7 @@ defineProps<{
 .tip-title {
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 8px;
 }
 

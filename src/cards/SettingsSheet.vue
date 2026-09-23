@@ -154,13 +154,13 @@ const sensitivityOptions = computed(() => [
   }
 
   .time-sep {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.65);
   }
 }
 
 .sheet-tip {
   margin-top: 12px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.68);
 }
 </style>

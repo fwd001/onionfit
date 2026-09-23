@@ -44,23 +44,26 @@ defineProps<{
   font-weight: 200;
   line-height: 1;
   letter-spacing: -0.03em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
 }
 
 .degree {
   font-size: 46px;
   font-weight: 200;
   margin-top: 10px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
 }
 
 .desc {
   margin-top: 2px;
   font-size: 19px;
   font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .feels {
   margin-top: 2px;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.82);
 }
 </style>

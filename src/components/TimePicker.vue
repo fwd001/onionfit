@@ -92,11 +92,11 @@ function clear() {
   display: grid;
   place-items: center;
   padding: 4px;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.68);
   z-index: 1;
 
   &:active {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
   }
 }
 </style>

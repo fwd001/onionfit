@@ -5,10 +5,13 @@ $color-glass: rgba(255, 255, 255, 0.14);
 $color-glass-strong: rgba(255, 255, 255, 0.22);
 $color-border: rgba(255, 255, 255, 0.24);
 
-// 文本三档
+// 文本三档（透明度按 iOS label 语义层级，适配深色磨砂背景）
 $text-primary: #ffffff;
-$text-secondary: rgba(255, 255, 255, 0.72);
-$text-tertiary: rgba(255, 255, 255, 0.52);
+$text-secondary: rgba(255, 255, 255, 0.8);
+$text-tertiary: rgba(255, 255, 255, 0.65);
+
+// 文字阴影：模拟 iOS vibrancy，让白字在彩色渐变上更立体可读
+$text-shadow-vibrant: 0 1px 3px rgba(0, 0, 0, 0.18);
 
 // 三层专属色
 $layer-base: #8fd3ff;     // 内层 冷蓝

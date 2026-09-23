@@ -1,0 +1,68 @@
+// ===== 服装目录（45 件，ISO 9920 clo 量级） =====
+// 贴身上装 10 / 贴身下装 9 / 保温层 13 / 防护层 13
+
+import type { ClothingItem } from './types'
+
+const c = (item: Omit<ClothingItem, 'id'> & { id: string }): ClothingItem => item
+
+export const CATALOG: ClothingItem[] = [
+  // ---------- 贴身层 BASE ----------
+  // 上装 TOP
+  c({ id: 't_tank', name: '速干背心', category: 'TOP', role: 'BASE', insulationClo: 0.06, wind: 0, water: 0, breathability: 0.9, solar: 0.15, weightGrams: 120, removable: true, comfortRangeC: [20, 38] }),
+  c({ id: 't_short', name: '短袖T恤', category: 'TOP', role: 'BASE', insulationClo: 0.1, wind: 0, water: 0, breathability: 0.9, solar: 0.25, weightGrams: 180, removable: true, comfortRangeC: [18, 34] }),
+  c({ id: 't_tee', name: '纯棉T恤', category: 'TOP', role: 'BASE', insulationClo: 0.12, wind: 0, water: 0, breathability: 0.8, solar: 0.2, weightGrams: 200, removable: true, comfortRangeC: [16, 32] }),
+  c({ id: 't_polo', name: 'Polo衫', category: 'TOP', role: 'BASE', insulationClo: 0.16, wind: 0, water: 0, breathability: 0.75, solar: 0.25, weightGrams: 240, removable: true, comfortRangeC: [14, 30] }),
+  c({ id: 't_longsleeve', name: '长袖棉衫', category: 'TOP', role: 'BASE', insulationClo: 0.22, wind: 0, water: 0, breathability: 0.75, solar: 0.3, weightGrams: 260, removable: true, comfortRangeC: [10, 26] }),
+  c({ id: 't_wool_base', name: '美利奴羊毛衫', category: 'TOP', role: 'BASE', insulationClo: 0.3, wind: 0, water: 0, breathability: 0.85, solar: 0.3, weightGrams: 300, removable: false, comfortRangeC: [2, 20] }),
+  c({ id: 't_silk_base', name: '真丝打底衫', category: 'TOP', role: 'BASE', insulationClo: 0.26, wind: 0, water: 0, breathability: 0.8, solar: 0.3, weightGrams: 220, removable: false, comfortRangeC: [4, 24] }),
+  c({ id: 't_sport_tee', name: '运动速干T恤', category: 'TOP', role: 'BASE', insulationClo: 0.1, wind: 0, water: 0.1, breathability: 0.95, solar: 0.3, weightGrams: 160, removable: true, comfortRangeC: [16, 36] }),
+  c({ id: 't_thermal_top', name: '发热保暖内衣', category: 'TOP', role: 'BASE', insulationClo: 0.36, wind: 0, water: 0, breathability: 0.6, solar: 0.25, weightGrams: 380, removable: false, comfortRangeC: [-8, 18] }),
+  c({ id: 't_cotton_under', name: '棉质贴身背心', category: 'TOP', role: 'BASE', insulationClo: 0.08, wind: 0, water: 0, breathability: 0.85, solar: 0.1, weightGrams: 140, removable: true, comfortRangeC: [18, 36] }),
+  // 下装 BOTTOM
+  c({ id: 'b_shorts', name: '运动短裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.08, wind: 0, water: 0, breathability: 0.85, solar: 0.3, weightGrams: 200, removable: true, comfortRangeC: [20, 38] }),
+  c({ id: 'b_chinos', name: '薄休闲裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.15, wind: 0, water: 0, breathability: 0.7, solar: 0.25, weightGrams: 320, removable: false, comfortRangeC: [8, 30] }),
+  c({ id: 'b_jeans', name: '牛仔裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.24, wind: 0.3, water: 0, breathability: 0.4, solar: 0.2, weightGrams: 600, removable: false, comfortRangeC: [2, 24] }),
+  c({ id: 'b_leggings', name: '紧身裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.18, wind: 0.2, water: 0, breathability: 0.6, solar: 0.2, weightGrams: 250, removable: false, comfortRangeC: [6, 26] }),
+  c({ id: 'b_thermal_leg', name: '发热保暖裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.32, wind: 0, water: 0, breathability: 0.5, solar: 0.2, weightGrams: 350, removable: false, comfortRangeC: [-8, 16] }),
+  c({ id: 'b_wool_pants', name: '羊毛裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.3, wind: 0.2, water: 0, breathability: 0.5, solar: 0.2, weightGrams: 400, removable: false, comfortRangeC: [-5, 18] }),
+  c({ id: 'b_cargo', name: '工装裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.2, wind: 0.2, water: 0, breathability: 0.5, solar: 0.25, weightGrams: 420, removable: false, comfortRangeC: [5, 26] }),
+  c({ id: 'b_trousers_loose', name: '阔腿裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.16, wind: 0.1, water: 0, breathability: 0.75, solar: 0.2, weightGrams: 280, removable: false, comfortRangeC: [10, 30] }),
+  c({ id: 'b_swim_short', name: '沙滩裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.06, wind: 0, water: 0.9, breathability: 0.9, solar: 0.3, weightGrams: 150, removable: true, comfortRangeC: [24, 40] }),
+
+  // ---------- 保温层 INSULATION ----------
+  c({ id: 'i_hoodie', name: '连帽卫衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.45, wind: 0.4, water: 0, breathability: 0.5, solar: 0.3, weightGrams: 500, removable: true, comfortRangeC: [4, 20] }),
+  c({ id: 'i_cardigan', name: '针织开衫', category: 'TOP', role: 'INSULATION', insulationClo: 0.4, wind: 0.3, water: 0, breathability: 0.6, solar: 0.3, weightGrams: 420, removable: true, comfortRangeC: [6, 22] }),
+  c({ id: 'i_sweater', name: '羊毛毛衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.6, wind: 0.4, water: 0, breathability: 0.5, solar: 0.3, weightGrams: 550, removable: true, comfortRangeC: [-2, 16] }),
+  c({ id: 'i_fleece', name: '抓绒衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.55, wind: 0.3, water: 0, breathability: 0.6, solar: 0.3, weightGrams: 480, removable: true, comfortRangeC: [0, 18] }),
+  c({ id: 'i_down_layer', name: '轻薄羽绒服', category: 'TOP', role: 'INSULATION', insulationClo: 1.1, wind: 0.6, water: 0, breathability: 0.3, solar: 0.4, weightGrams: 700, removable: true, comfortRangeC: [-15, 8] }),
+  c({ id: 'i_vest', name: '保暖马甲', category: 'TOP', role: 'INSULATION', insulationClo: 0.5, wind: 0.4, water: 0, breathability: 0.6, solar: 0.4, weightGrams: 380, removable: true, comfortRangeC: [-5, 14] }),
+  c({ id: 'i_denim_jacket', name: '牛仔外套', category: 'TOP', role: 'INSULATION', insulationClo: 0.45, wind: 0.5, water: 0.3, breathability: 0.4, solar: 0.3, weightGrams: 700, removable: true, comfortRangeC: [4, 18] }),
+  c({ id: 'i_blazer', name: '西装外套', category: 'TOP', role: 'INSULATION', insulationClo: 0.42, wind: 0.4, water: 0, breathability: 0.5, solar: 0.3, weightGrams: 550, removable: true, comfortRangeC: [6, 20] }),
+  c({ id: 'i_bomber', name: '棒球夹克', category: 'TOP', role: 'INSULATION', insulationClo: 0.55, wind: 0.6, water: 0.3, breathability: 0.4, solar: 0.3, weightGrams: 650, removable: true, comfortRangeC: [0, 16] }),
+  c({ id: 'i_padded_jacket', name: '棉服', category: 'TOP', role: 'INSULATION', insulationClo: 1.0, wind: 0.5, water: 0.3, breathability: 0.3, solar: 0.35, weightGrams: 900, removable: false, comfortRangeC: [-12, 6] }),
+  c({ id: 'i_quilted_vest', name: '充绒马甲', category: 'TOP', role: 'INSULATION', insulationClo: 0.65, wind: 0.5, water: 0, breathability: 0.5, solar: 0.35, weightGrams: 420, removable: true, comfortRangeC: [-10, 10] }),
+  c({ id: 'i_mid_cotton', name: '摇粒绒打底', category: 'TOP', role: 'INSULATION', insulationClo: 0.48, wind: 0.3, water: 0, breathability: 0.65, solar: 0.3, weightGrams: 400, removable: true, comfortRangeC: [2, 18] }),
+  c({ id: 'i_skirt_thick', name: '厚裙', category: 'BOTTOM', role: 'INSULATION', insulationClo: 0.28, wind: 0.2, water: 0, breathability: 0.6, solar: 0.25, weightGrams: 350, removable: true, comfortRangeC: [8, 24] }),
+
+  // ---------- 防护层 PROTECTION ----------
+  c({ id: 'p_windbreaker', name: '防风夹克', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.25, wind: 0.9, water: 0.4, breathability: 0.5, solar: 0.4, weightGrams: 450, removable: true, comfortRangeC: [4, 22], shellGrade: 1 }),
+  c({ id: 'p_raincoat', name: '雨衣', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.1, wind: 0.8, water: 0.98, breathability: 0.1, solar: 0.3, weightGrams: 400, removable: true, comfortRangeC: [2, 26], shellGrade: 3 }),
+  c({ id: 'p_hardshell', name: '硬壳冲锋衣', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.35, wind: 1.0, water: 1.0, breathability: 0.35, solar: 0.5, weightGrams: 650, removable: true, comfortRangeC: [-5, 22], shellGrade: 3 }),
+  c({ id: 'p_softshell', name: '软壳衣', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.4, wind: 0.85, water: 0.7, breathability: 0.55, solar: 0.45, weightGrams: 550, removable: true, comfortRangeC: [-2, 20], shellGrade: 2 }),
+  c({ id: 'p_down_coat', name: '羽绒服', category: 'OUTER', role: 'PROTECTION', insulationClo: 1.2, wind: 0.8, water: 0.5, breathability: 0.2, solar: 0.3, weightGrams: 1200, removable: false, comfortRangeC: [-25, 2], shellGrade: 1 }),
+  c({ id: 'p_parajumpers', name: '派克服', category: 'OUTER', role: 'PROTECTION', insulationClo: 1.15, wind: 0.75, water: 0.6, breathability: 0.25, solar: 0.3, weightGrams: 1300, removable: false, comfortRangeC: [-20, 0], shellGrade: 1 }),
+  c({ id: 'p_sun_jacket', name: '防晒衣', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.12, wind: 0.3, water: 0.2, breathability: 0.8, solar: 0.9, weightGrams: 180, removable: true, comfortRangeC: [16, 36], shellGrade: 0 }),
+  c({ id: 'p_trench', name: '风衣', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.3, wind: 0.7, water: 0.6, breathability: 0.4, solar: 0.35, weightGrams: 600, removable: true, comfortRangeC: [2, 18], shellGrade: 1 }),
+  c({ id: 'p_swim_jacket', name: '防水冲锋衣', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.4, wind: 1.0, water: 1.0, breathability: 0.3, solar: 0.5, weightGrams: 700, removable: true, comfortRangeC: [-5, 20], shellGrade: 3 }),
+  c({ id: 'p_vintage', name: '复古厚夹克', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.5, wind: 0.7, water: 0.5, breathability: 0.35, solar: 0.3, weightGrams: 800, removable: true, comfortRangeC: [-2, 16], shellGrade: 1 }),
+  c({ id: 'p_umbrella_vest', name: '防晒帽衫', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.18, wind: 0.25, water: 0.3, breathability: 0.7, solar: 0.85, weightGrams: 250, removable: true, comfortRangeC: [12, 34], shellGrade: 0 }),
+  c({ id: 'p_pvc_poncho', name: '轻便雨披', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.05, wind: 0.5, water: 0.99, breathability: 0.05, solar: 0.25, weightGrams: 220, removable: true, comfortRangeC: [5, 30], shellGrade: 3 }),
+  c({ id: 'p_linen_jacket', name: '亚麻西装外套', category: 'OUTER', role: 'PROTECTION', insulationClo: 0.2, wind: 0.3, water: 0.1, breathability: 0.8, solar: 0.6, weightGrams: 350, removable: true, comfortRangeC: [14, 30], shellGrade: 0 }),
+]
+
+/** 按角色分组索引 */
+export const catalogByRole = (role: 'BASE' | 'INSULATION' | 'PROTECTION') =>
+  CATALOG.filter((i) => i.role === role)
+
+export const catalogByCategory = (category: 'TOP' | 'BOTTOM' | 'OUTER') =>
+  CATALOG.filter((i) => i.category === category)

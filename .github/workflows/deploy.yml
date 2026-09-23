@@ -1,0 +1,63 @@
+# 构建 Vite 站点并部署到 GitHub Pages
+# 参考 MemoDeck 官方三件套：actions/configure-pages + upload-pages-artifact + deploy-pages
+# 区别：本项目需要 pnpm install + build 产出 dist
+name: Deploy to GitHub Pages
+
+on:
+  # 推送 main 分支时自动部署
+  push:
+    branches: [main]
+  # 允许在 Actions 页面手动触发（Run workflow）
+  workflow_dispatch:
+
+# 最小权限（Pages 部署标准声明）
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时刻只允许一个部署；新推送取消上一个进行中的部署
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout 代码
+        uses: actions/checkout@v4
+
+      # 按 package.json 的 packageManager 字段安装 pnpm
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 构建
+        run: pnpm build
+        env:
+          # Pages 站点挂在 /onionfit/ 子路径下（与仓库名一致，仓库名变更时同步改这里）
+          VITE_BASE: /onionfit/
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传 dist 为部署产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,27 @@
+# 依赖与构建产物
+node_modules
+dist
+dist-ssr
+tsconfig.tsbuildinfo
+
+# 本地环境变量（QWeather key 等未来接入时使用）
+*.local
+.env
+.env.*
+
+# 日志
+*.log
+
+# 编辑器 / IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+.trae
+
+# 测试产物
+playwright-report
+test-results
+
+# 系统文件
+.DS_Store
+Thumbs.db

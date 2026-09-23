@@ -1,0 +1,64 @@
+@use './tokens' as *;
+@use './glass';
+
+// ===== 基础重置与 iOS 原生感 =====
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: $font-stack;
+  color: $text-primary;
+  background: $color-base;
+  // 移动端原生感
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+#app {
+  min-height: 100%;
+  // 通过 innerHeight 动态适配 iOS 地址栏（HomeView 中处理）
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input {
+  font-family: inherit;
+}
+
+// 可滚动容器回弹效果
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+// 安全区工具类
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

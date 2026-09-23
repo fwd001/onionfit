@@ -78,6 +78,9 @@ void weatherDesc
   gap: 10px;
   overflow-x: auto;
   padding-bottom: 4px;
+  /* 右侧渐变提示还有更多小时可滑（滚动条已按原生惯例隐藏） */
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 24px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 24px), transparent 100%);
 }
 
 .hour-chip {

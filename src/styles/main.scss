@@ -21,6 +21,18 @@ body {
   user-select: none;
   overflow-x: hidden;
   overscroll-behavior-y: none;
+  // 去双击缩放延迟（配合 viewport user-scalable=no，点击零延迟）
+  touch-action: manipulation;
+}
+
+// 原生 App 不显示可见滚动条（iOS HIG）；
+// 横向滚动条在移动端尤其突兀 —— 统一隐藏，可滑动内容靠渐变蒙层提示
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none; // Firefox
 }
 
 #app {

@@ -43,11 +43,12 @@ export const SOLAR = {
 /**
  * 人体与偏好（Person）
  * 冷热偏好偏移（deg），对应 PreferenceConfig 与 AgeProfileConfig
+ * 偏移直接作用于"个体中性温度"：值越高 → 同样气温下觉得更冷 → 需更多保暖
  */
 export const PREFERENCE_OFFSET: Record<'COLD_SENSITIVE' | 'NORMAL' | 'HEAT_SENSITIVE', number> = {
-  COLD_SENSITIVE: -2.0, // 怕冷：目标温度上调 → 需更多保暖 → 偏移为负
+  COLD_SENSITIVE: 2.0, // 怕冷：中性温度更高 → 同温下需更多保暖
   NORMAL: 0,
-  HEAT_SENSITIVE: 1.5, // 怕热：少穿
+  HEAT_SENSITIVE: -1.5, // 怕热：中性温度更低 → 同温下穿更少
 }
 
 /** 人群热特征：怕冷敏感档（相对成人偏移） */

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-// 洋葱穿搭卡片：洋葱环 + 每层层名/衣物/理由（未穿层淡显）
+// 洋葱穿搭卡片：洋葱环 + 每层层名/衣物（卡通图形+名称）/理由（未穿层淡显）
 import GlassCard from '@/components/GlassCard.vue'
+import GarmentIcon from '@/components/GarmentIcon.vue'
 import OnionDiagram from './OnionDiagram.vue'
 import { ROLE_LABEL } from '@/core/engine/layering'
 import type { OutfitAssembly } from '@/core/types'
@@ -47,7 +48,19 @@ const roleColor: Record<string, string> = {
               v-if="layer.items.length"
               class="layer-items"
             >
-              {{ layer.items.map((i) => i.name).join(' / ') }}
+              <span
+                v-for="it in layer.items"
+                :key="it.id"
+                class="item-chip"
+              >
+                <span
+                  class="chip-icon"
+                  :style="{ color: roleColor[layer.role] }"
+                >
+                  <GarmentIcon :id="it.id" />
+                </span>
+                <span class="chip-name">{{ it.name }}</span>
+              </span>
             </div>
           </div>
         </div>
@@ -118,11 +131,30 @@ const roleColor: Record<string, string> = {
 }
 
 .layer-items {
-  margin-top: 2px;
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.item-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 7px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.09);
+  transition: background 0.2s ease;
+}
+
+.chip-icon {
+  display: grid;
+  place-items: center;
+}
+
+.chip-name {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.78);
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .empty-hint {

@@ -24,9 +24,9 @@ export function resolvePerson(settings: UserSettings): PersonProfile {
   const pref = PREFERENCE_OFFSET[settings.sensitivity]
   const age = AGE_PROFILE[settings.profile]
 
-  // 冷敏感偏好为负（目标温度更高），热敏感为正（目标更低）
+  // 怕冷：中性温度更高（觉得更冷）→ 同温下需要更多保暖；怕热相反
   const preferenceK = pref
-  const totalOffset = preferenceK + age.coldOffsetK // 怕冷档补足人群偏移
+  const totalOffset = preferenceK + age.coldOffsetK // 怕冷偏好与人群偏移同向叠加
   return {
     neutralTempC: TARGET_NEUTRAL + totalOffset,
     comfortOffsetK: totalOffset,

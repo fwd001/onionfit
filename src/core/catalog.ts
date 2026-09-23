@@ -20,7 +20,7 @@ export const CATALOG: ClothingItem[] = [
   c({ id: 't_cotton_under', name: '棉质贴身背心', category: 'TOP', role: 'BASE', insulationClo: 0.08, wind: 0, water: 0, breathability: 0.85, solar: 0.1, weightGrams: 140, removable: true, comfortRangeC: [18, 36] }),
   // 下装 BOTTOM
   c({ id: 'b_shorts', name: '运动短裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.08, wind: 0, water: 0, breathability: 0.85, solar: 0.3, weightGrams: 200, removable: true, comfortRangeC: [20, 38] }),
-  c({ id: 'b_chinos', name: '薄休闲裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.15, wind: 0, water: 0, breathability: 0.7, solar: 0.25, weightGrams: 320, removable: false, comfortRangeC: [8, 30] }),
+  c({ id: 'b_chinos', name: '薄休闲裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.2, wind: 0, water: 0, breathability: 0.7, solar: 0.25, weightGrams: 320, removable: false, comfortRangeC: [8, 30] }),
   c({ id: 'b_jeans', name: '牛仔裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.24, wind: 0.3, water: 0, breathability: 0.4, solar: 0.2, weightGrams: 600, removable: false, comfortRangeC: [2, 24] }),
   c({ id: 'b_leggings', name: '紧身裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.18, wind: 0.2, water: 0, breathability: 0.6, solar: 0.2, weightGrams: 250, removable: false, comfortRangeC: [6, 26] }),
   c({ id: 'b_thermal_leg', name: '发热保暖裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.32, wind: 0, water: 0, breathability: 0.5, solar: 0.2, weightGrams: 350, removable: false, comfortRangeC: [-8, 16] }),
@@ -30,11 +30,13 @@ export const CATALOG: ClothingItem[] = [
   c({ id: 'b_swim_short', name: '沙滩裤', category: 'BOTTOM', role: 'BASE', insulationClo: 0.06, wind: 0, water: 0.9, breathability: 0.9, solar: 0.3, weightGrams: 150, removable: true, comfortRangeC: [24, 40] }),
 
   // ---------- 保温层 INSULATION ----------
-  c({ id: 'i_hoodie', name: '连帽卫衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.45, wind: 0.4, water: 0, breathability: 0.5, solar: 0.3, weightGrams: 500, removable: true, comfortRangeC: [4, 20] }),
+  // clo 已按 ASHRAE Fundamentals / ISO 9920 Annex B 核对：
+  // 卫衣 ~0.35-0.40、厚毛衣 ~0.45-0.50、抓绒 ~0.40-0.45、轻薄羽绒 ~0.90-1.0
+  c({ id: 'i_hoodie', name: '连帽卫衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.4, wind: 0.4, water: 0, breathability: 0.5, solar: 0.3, weightGrams: 500, removable: true, comfortRangeC: [4, 20] }),
   c({ id: 'i_cardigan', name: '针织开衫', category: 'TOP', role: 'INSULATION', insulationClo: 0.4, wind: 0.3, water: 0, breathability: 0.6, solar: 0.3, weightGrams: 420, removable: true, comfortRangeC: [6, 22] }),
-  c({ id: 'i_sweater', name: '羊毛毛衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.6, wind: 0.4, water: 0, breathability: 0.5, solar: 0.3, weightGrams: 550, removable: true, comfortRangeC: [-2, 16] }),
-  c({ id: 'i_fleece', name: '抓绒衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.55, wind: 0.3, water: 0, breathability: 0.6, solar: 0.3, weightGrams: 480, removable: true, comfortRangeC: [0, 18] }),
-  c({ id: 'i_down_layer', name: '轻薄羽绒服', category: 'TOP', role: 'INSULATION', insulationClo: 1.1, wind: 0.6, water: 0, breathability: 0.3, solar: 0.4, weightGrams: 700, removable: true, comfortRangeC: [-15, 8] }),
+  c({ id: 'i_sweater', name: '羊毛毛衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.5, wind: 0.4, water: 0, breathability: 0.5, solar: 0.3, weightGrams: 550, removable: true, comfortRangeC: [-2, 16] }),
+  c({ id: 'i_fleece', name: '抓绒衣', category: 'TOP', role: 'INSULATION', insulationClo: 0.45, wind: 0.3, water: 0, breathability: 0.6, solar: 0.3, weightGrams: 480, removable: true, comfortRangeC: [0, 18] }),
+  c({ id: 'i_down_layer', name: '轻薄羽绒服', category: 'TOP', role: 'INSULATION', insulationClo: 0.95, wind: 0.6, water: 0, breathability: 0.3, solar: 0.4, weightGrams: 700, removable: true, comfortRangeC: [-15, 8] }),
   c({ id: 'i_vest', name: '保暖马甲', category: 'TOP', role: 'INSULATION', insulationClo: 0.5, wind: 0.4, water: 0, breathability: 0.6, solar: 0.4, weightGrams: 380, removable: true, comfortRangeC: [-5, 14] }),
   c({ id: 'i_denim_jacket', name: '牛仔外套', category: 'TOP', role: 'INSULATION', insulationClo: 0.45, wind: 0.5, water: 0.3, breathability: 0.4, solar: 0.3, weightGrams: 700, removable: true, comfortRangeC: [4, 18] }),
   c({ id: 'i_blazer', name: '西装外套', category: 'TOP', role: 'INSULATION', insulationClo: 0.42, wind: 0.4, water: 0, breathability: 0.5, solar: 0.3, weightGrams: 550, removable: true, comfortRangeC: [6, 20] }),

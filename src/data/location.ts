@@ -18,7 +18,7 @@ export interface LocateError {
   message: string
 }
 
-const LOCATE_TIMEOUT_MS = 8000
+const LOCATE_TIMEOUT_MS = 5000
 
 const isIOS = () => /iP(hone|ad|od)/.test(navigator.userAgent)
 

@@ -11,7 +11,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="metrics">
+  <div class="metrics touch-scroll">
     <div class="metric">
       <AppIcon
         icon="fluent:temperature-24-regular"
@@ -52,6 +52,9 @@ defineProps<{
   gap: 10px;
   padding: 0 4px 4px;
   overflow-x: auto;
+  /* 右缘渐变提示可滑（滚动条按原生惯例隐藏） */
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 18px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 18px), transparent 100%);
 }
 
 .metric {

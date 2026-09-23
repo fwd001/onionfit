@@ -39,15 +39,16 @@ defineProps<{
 }
 
 .temp {
+  /* iOS 天气 App 同款 ultralight 字重 */
   font-size: 92px;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1;
   letter-spacing: -0.03em;
 }
 
 .degree {
   font-size: 46px;
-  font-weight: 300;
+  font-weight: 200;
   margin-top: 10px;
 }
 

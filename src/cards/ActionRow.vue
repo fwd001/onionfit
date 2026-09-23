@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // 操作行：人群 / 活动（点击展开就地设置面板）+ 刷新 / 定位 胶囊
+import { useVibrate } from '@vueuse/core'
 import AppIcon from '@/components/AppIcon.vue'
 
 defineProps<{
@@ -18,7 +19,11 @@ const emit = defineEmits<{
   locate: []
 }>()
 
+// 轻点触觉反馈（原生手感）
+const { vibrate } = useVibrate({ pattern: [10] })
+
 function onToggle() {
+  vibrate()
   emit('toggle')
 }
 </script>

@@ -55,6 +55,15 @@ button {
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
+  // 按压即时反馈（HIG：按下透明度微降，松手恢复）；组合声明避免被局部 transition 整体覆盖
+  transition:
+    opacity 0.12s ease,
+    background 0.2s ease,
+    transform 0.12s ease;
+
+  &:active {
+    opacity: 0.75;
+  }
 }
 
 input {

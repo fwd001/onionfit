@@ -67,10 +67,9 @@ export const useWeatherStore = defineStore('weather', () => {
     }
   }
 
-  /** 更换城市（选城页调用），拉取新城市天气 */
+  /** 更换城市（选城页调用）：乐观更新——城市立即切换、旧天气保留展示，新数据到达后平滑替换 */
   async function selectCity(newCity: CityInfo): Promise<void> {
     city.value = newCity
-    report.value = null
     stale.value = false
     error.value = null
     await refresh()

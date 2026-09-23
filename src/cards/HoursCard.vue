@@ -1,5 +1,6 @@
 <script setup lang="ts">
-// 逐时趋势卡片：横向滚动 chip（12h）
+// 逐时趋势卡片：横向滚动 chip（12h）+ 首次进入滑动指引
+import { onMounted, onUnmounted, ref } from 'vue'
 import GlassCard from '@/components/GlassCard.vue'
 import { weatherDesc } from '@/presentation'
 import type { HourlyEnvironment, WeatherKind } from '@/core/types'
@@ -8,6 +9,8 @@ const props = defineProps<{
   hourly: HourlyEnvironment[]
   nowHour: number
 }>()
+
+const scrollRef = ref<HTMLElement | null>(null)
 
 const kindText: Record<string, string> = {
   clear: '晴',
@@ -34,13 +37,31 @@ const shown = (() => {
 function isNow(i: number): boolean {
   return hourOf(shown[i]?.time ?? '') === props.nowHour
 }
+
+// 滑动指引：可滚动时轻推一下再弹回，告诉用户"这里可以横滑"（原生 carousel 手法，仅一次）
+onMounted(() => {
+  const el = scrollRef.value
+  if (!el || el.scrollWidth <= el.clientWidth + 8) return
+  let back: ReturnType<typeof setTimeout> | undefined
+  const timer = setTimeout(() => {
+    el.scrollTo({ left: 34, behavior: 'smooth' })
+    back = setTimeout(() => el.scrollTo({ left: 0, behavior: 'smooth' }), 460)
+  }, 550)
+  onUnmounted(() => {
+    clearTimeout(timer)
+    if (back) clearTimeout(back)
+  })
+})
 void weatherDesc
 </script>
 
 <template>
   <GlassCard class="hours-card">
     <div class="card-title">未来逐时</div>
-    <div class="hours-scroll touch-scroll">
+    <div
+      ref="scrollRef"
+      class="hours-scroll touch-scroll"
+    >
       <div
         v-for="(h, i) in shown"
         :key="h.time"

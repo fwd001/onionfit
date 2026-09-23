@@ -175,13 +175,24 @@ if (!settings.isOnboarded) {
         :message="locateError"
       />
 
-      <!-- 骨架态 -->
+      <!-- 骨架屏：与真实卡片同构的 shimmer 占位（无缓存首开时） -->
       <div
         v-if="!recommendation"
-        class="loading-block"
+        class="skeleton-stack"
       >
-        <div class="spinner" />
-        <p>正在获取天气数据…</p>
+        <div class="skel skel-hero">
+          <div class="skel-line big" />
+          <div class="skel-line" />
+        </div>
+        <div class="skel skel-card">
+          <div class="skel-line" />
+          <div class="skel-line short" />
+          <div class="skel-line short" />
+        </div>
+        <div class="skel skel-card">
+          <div class="skel-line" />
+          <div class="skel-line short" />
+        </div>
       </div>
 
       <template v-else>
@@ -275,28 +286,64 @@ if (!settings.isOnboarded) {
   z-index: 5;
 }
 
-.loading-block {
+// ===== 骨架屏（与真实卡片同构，shimmer 横向流动） =====
+.skeleton-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 16px 0;
+}
+
+.skel {
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.06) 40%,
+      rgba(255, 255, 255, 0.13) 50%,
+      rgba(255, 255, 255, 0.06) 60%
+    );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.skel-hero {
+  min-height: 140px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  padding: 60px 20px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
 }
 
-.spinner {
-  width: 26px;
-  height: 26px;
-  border: 3px solid rgba(255, 255, 255, 0.25);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+.skel-card {
+  min-height: 120px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-@keyframes spin {
+.skel-line {
+  height: 14px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.1);
+  width: 55%;
+
+  &.big {
+    width: 40%;
+    height: 64px;
+    border-radius: 16px;
+  }
+
+  &.short {
+    width: 35%;
+  }
+}
+
+@keyframes shimmer {
   to {
-    transform: rotate(360deg);
+    background-position: -200% 0;
   }
 }
 

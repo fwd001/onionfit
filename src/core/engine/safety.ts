@@ -58,14 +58,14 @@ export function assessSafety(
     forced.WIND = Math.max(forced.WIND ?? 0, 50)
   }
 
-  // 强降雨
+  // 强降雨（只谈穿着的外层，「带不带伞」由 UmbrellaEngine 单独给结论）
   if (rain >= SAFETY.dangerRainMm) {
     level = maxLevel(level, 'DANGER')
-    warnings.push('预计降雨量较大，务必携带雨具与防水外层')
+    warnings.push('预计降雨量较大，外层务必防水')
     forced.RAIN = Math.max(forced.RAIN ?? 0, 95)
   } else if (rain >= SAFETY.watchRainMm) {
     level = maxLevel(level, 'WATCH')
-    warnings.push('有降雨，建议携带雨伞或防水外层')
+    warnings.push('有降雨，外层建议选防水面料')
     forced.RAIN = Math.max(forced.RAIN ?? 0, 60)
   }
 

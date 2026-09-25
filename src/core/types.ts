@@ -194,8 +194,6 @@ export interface OutfitAssembly {
 }
 
 export type AccessoryKind =
-  | 'UMBRELLA'
-  | 'RAINCOAT'
   | 'SCARF'
   | 'GLOVES'
   | 'SUNGLASSES'
@@ -209,6 +207,39 @@ export interface Accessory {
   kind: AccessoryKind
   label: string
   reasonCode?: ReasonCode
+}
+
+// ===== 带伞判定（UmbrellaEngine 产出，UI 消费） =====
+
+export type UmbrellaVerdict = 'BRING' | 'RAINCOAT' | 'SKIP'
+
+/** 一次户外暴露窗口（出门段 / 回家段 / 两段都已过去时的此刻段） */
+export interface UmbrellaLeg {
+  phase: 'OUT' | 'HOME' | 'NOW'
+  /** 起始时刻 HH:mm */
+  start: string
+  /** 暴露时长 min */
+  minutes: number
+  /** 该段被淋到的概率 0-100 */
+  probability: number
+}
+
+export interface UmbrellaAssessment {
+  /** 通勤时段至少一段被淋到的概率 0-100 */
+  probability: number
+  verdict: UmbrellaVerdict
+  /** cost-loss 决策阈值 % */
+  threshold: number
+  legs: UmbrellaLeg[]
+  /** 暴露窗口内风速峰值 m/s */
+  windMs: number
+  /** 暴露窗口内最大雨强 mm/h */
+  rainMmPerHour: number
+  /** HOURLY = 有逐时预报；DEGRADED = 只能按全天概率估算 */
+  confidence: 'HOURLY' | 'DEGRADED'
+  /** 通勤时刻是否来自兜底（用户未设置） */
+  assumed: boolean
+  reasons: ReasonCode[]
 }
 
 export type SafetyLevel = 'NORMAL' | 'WATCH' | 'DANGER'
@@ -270,6 +301,8 @@ export interface OutfitRecommendation {
   periods: PeriodRecommendation[]
   timeline: TimelineEvent[]
   accessories: Accessory[]
+  /** 今天出门带不带伞 */
+  umbrella: UmbrellaAssessment
   safety: SafetyReport
   dayScore: number
   reasons: ReasonCode[]

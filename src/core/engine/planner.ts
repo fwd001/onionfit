@@ -20,6 +20,7 @@ import { matchCandidates } from './matching'
 import { assembleOutfit } from './scoring'
 import { buildDayParts, buildTimeline, tomorrowSummary } from './schedule'
 import { accessoriesOf } from './accessories'
+import { assessUmbrella } from './umbrella'
 import { round1 } from './psychrometrics'
 import { THERMAL } from '../config'
 
@@ -60,6 +61,13 @@ export function plan({ report, settings, now = new Date() }: PlanInput): OutfitR
   const periods = buildDayParts(ctx, hourlyThermal, settings.outTime, settings.homeTime)
   const timeline = buildTimeline(ctx, hourlyThermal, dayOutfit)
   const accessories = accessoriesOf(ctx, demand.vector, person)
+  const umbrella = assessUmbrella({
+    ctx,
+    nextDayRainChance: report.daily[1].rainChancePercent,
+    activity: settings.activity,
+    settings,
+    now,
+  })
 
   // 明日（day 2）
   const t2 = report.daily[1]
@@ -98,6 +106,7 @@ export function plan({ report, settings, now = new Date() }: PlanInput): OutfitR
     periods,
     timeline,
     accessories,
+    umbrella,
     safety,
     dayScore: score,
     reasons: flattenReasons(demand.reasons),

@@ -7,6 +7,9 @@ import type {
   AccessoryKind,
   DemandDim,
   DemandVector,
+  UmbrellaAssessment,
+  UmbrellaLeg,
+  UmbrellaVerdict,
   WeatherKind,
 } from '@/core/types'
 
@@ -53,10 +56,6 @@ export function demandSummary(v: DemandVector): { dim: DemandDim; value: number;
 /** 配饰标签（含数量/轻便描述） */
 export function accessoryLabel(a: Accessory): string {
   switch (a.kind) {
-    case 'UMBRELLA':
-      return '建议带伞'
-    case 'RAINCOAT':
-      return '建议雨衣'
     case 'SCARF':
       return '围巾可护颈'
     case 'GLOVES':
@@ -76,6 +75,53 @@ export function accessoryLabel(a: Accessory): string {
     default:
       return a.label
   }
+}
+
+/** 带伞结论标题 */
+const UMBRELLA_HEADLINE: Record<UmbrellaVerdict, string> = {
+  BRING: '推荐带伞',
+  RAINCOAT: '建议穿雨衣',
+  SKIP: '不用带伞',
+}
+
+const LEG_PHASE_LABEL: Record<UmbrellaLeg['phase'], string> = {
+  OUT: '出门',
+  HOME: '回家',
+  NOW: '此刻',
+}
+
+/** 结论标题：逐时数据充分且远超阈值时升级为强提醒 */
+export function umbrellaHeadline(a: UmbrellaAssessment): string {
+  if (a.verdict === 'BRING' && a.confidence === 'HOURLY' && a.probability >= a.threshold * 2) {
+    return '务必带伞'
+  }
+  return UMBRELLA_HEADLINE[a.verdict]
+}
+
+/** 通勤段行首标签 */
+export function umbrellaLegLabel(leg: UmbrellaLeg): string {
+  return `${LEG_PHASE_LABEL[leg.phase]} ${leg.start}`
+}
+
+/** 一句话依据：指出最容易淋到的那段，以及改判雨衣的原因 */
+export function umbrellaReason(a: UmbrellaAssessment): string {
+  if (!a.probability) return '外出窗口内没有降雨信号'
+  if (a.verdict === 'RAINCOAT') {
+    return a.reasons.includes('wind-rain')
+      ? `风 ${a.windMs} m/s，伞撑不住，改穿雨衣`
+      : `雨强 ${a.rainMmPerHour} mm/h，伞挡不住，改穿雨衣`
+  }
+  const worst = a.legs.reduce((acc, l) => (l.probability > acc.probability ? l : acc), a.legs[0])
+  if (a.verdict === 'SKIP') return '外出时段下雨的可能不大，不用多带一把伞'
+  return `最容易淋到的是${LEG_PHASE_LABEL[worst.phase]}那段 ${worst.minutes} 分钟`
+}
+
+/** 结论可靠性说明（兜底时段 / 缺逐时预报） */
+export function umbrellaCaveat(a: UmbrellaAssessment): string {
+  if (a.confidence === 'DEGRADED' && a.assumed) return '未设置通勤时间，且缺逐时预报，按全天概率估算'
+  if (a.confidence === 'DEGRADED') return '缺逐时预报，按全天降水概率估算'
+  if (a.assumed) return '未设置通勤时间，按 07:30 / 18:00 估算'
+  return ''
 }
 
 /** 建议文案生成（不参与决策，只描述）——层的口语化提示 */

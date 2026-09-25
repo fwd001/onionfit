@@ -18,6 +18,7 @@ import ErrorBanner from '@/cards/ErrorBanner.vue'
 import Hero from '@/cards/Hero.vue'
 import MetricsRow from '@/cards/MetricsRow.vue'
 import OnionCard from '@/cards/OnionCard.vue'
+import UmbrellaCard from '@/cards/UmbrellaCard.vue'
 import DemandCard from '@/cards/DemandCard.vue'
 import DaypartCard from '@/cards/DaypartCard.vue'
 import HoursCard from '@/cards/HoursCard.vue'
@@ -216,6 +217,10 @@ if (!settings.isOnboarded) {
           <OnionCard
             :outfit="recommendation.nowOutfit"
             :worn-count="recommendation.wornNowCount"
+          />
+          <UmbrellaCard
+            :umbrella="recommendation.umbrella"
+            @adjust="showSettings = true"
           />
           <DemandCard :demand="recommendation.demand.vector" />
           <DaypartCard :periods="recommendation.periods" />

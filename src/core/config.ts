@@ -132,6 +132,39 @@ export const SAFETY = {
 }
 
 /**
+ * 带伞判定（Umbrella）
+ * cost-loss 模型：只有当被淋概率超过 100/(1+lossRatio) 时，带伞的预期损失才低于白背一天
+ */
+export const UMBRELLA = {
+  /** 淋湿损失 : 白背一把伞的代价。3 → 决策阈值 25% */
+  lossRatio: 3,
+  /** 单次户外暴露时长 min（到车站/停车场的量级），按活动取值；缺失回落 WALKING */
+  legMinutes: {
+    HOME: 3,
+    OFFICE: 12,
+    CLASS: 12,
+    WALKING: 18,
+    CYCLING: 15,
+    RUNNING: 8,
+    OUTDOOR_WORK: 10,
+    OUTDOOR_LEISURE: 12,
+    DRIVING: 4,
+  } as Record<string, number>,
+  /** 兜底出门时刻 07:30（自午夜起分钟数） */
+  fallbackOutMinutes: 450,
+  /** 兜底回家时刻 18:00（自午夜起分钟数） */
+  fallbackHomeMinutes: 1080,
+  /** 伞在大风下失效的风速阈值 m/s */
+  windVetoMs: 12,
+  /**
+   * 降水持续因子 0-1：整点降水概率指「这一小时下过雨」，雨不会只精确下在你步行那几分钟。
+   * 1 = 有雨的小时全程在下（窗口概率=整点概率）；0 = 雨只占该小时 w 的宽度。
+   * 0.6 对应雷达回波动辄持续 30-60min、而通勤窗口只有十几分钟。
+   */
+  rainPersistence: 0.6,
+}
+
+/**
  * 评分权重（合计 1.0）
  */
 export const SCORING = {

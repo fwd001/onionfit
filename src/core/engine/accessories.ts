@@ -1,4 +1,5 @@
-// AccessoriesEngine：配饰与携带建议（阈值触发，确定性）
+// AccessoriesEngine：佩戴类配饰建议（阈值触发，确定性）
+// 伞/雨衣不在此列：那是「带不带」的携带决策，由 UmbrellaEngine 按通勤暴露窗口单独测算，避免两处口径打架
 
 import type { Accessory, AccessoryKind, DemandVector } from '../types'
 import type { WeatherContext } from './weather'
@@ -13,14 +14,6 @@ export function accessoriesOf(
   const push = (kind: AccessoryKind, label: string, reason?: string) =>
     list.push({ kind, label, reasonCode: reason })
 
-  // 伞
-  if (demand.RAIN > 25 && ctx.windMaxMs < 12) {
-    push('UMBRELLA', '雨伞', 'rain')
-  }
-  // 雨衣（大风天不适合伞）
-  if (demand.RAIN > 45 && ctx.windMaxMs >= 12) {
-    push('RAINCOAT', '雨衣', 'wind-rain')
-  }
   // 围巾/手套（冷）
   if (ctx.dayMinC <= 4 && person.conservativeK >= 0) {
     push('SCARF', '围巾', 'cold')
